@@ -2,6 +2,7 @@ import { useState } from "react";
 import { getPostcodes, getCrimeData } from "./api";
 import Header from "./components/Header";
 import SearchBar from "./components/SearchBar";
+import CrimeTableView from "./pages/CrimeTableView";
 import "./App.css";
 
 function App() {
@@ -22,12 +23,11 @@ function App() {
 		}
 	};
 
-	console.log(crimeData)
-
 	return (
 		<>
 			<Header />
 			<SearchBar postcode={postcode} onSearch={handleSearch} onInputChange={handleInputChange} />
+			<CrimeTableView crimeData={crimeData} />
 		</>
 	);
 }
