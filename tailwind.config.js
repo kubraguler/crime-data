@@ -2,7 +2,11 @@
 module.exports = {
 	content: ["./src/**/*.{html,js}"],
 	theme: {
-		extend: {}
+		extend: {
+			rotate: {
+				180: "180deg"
+			}
+		}
 	},
 	plugins: [require("@tailwindcss/line-clamp")]
 };
