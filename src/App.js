@@ -18,15 +18,22 @@ function App() {
 			const postcodeData = await getPostcodes(postcode);
 			const fetchedCrimeData = await getCrimeData(postcodeData.latitude, postcodeData.longitude);
 			setCrimeData(fetchedCrimeData);
+			setPostcode("");
 		} catch (error) {
 			console.error("Error fetching data:", error.message);
+		}
+	};
+
+	const handleKeyPress = (e) => {
+		if (e.key === "Enter") {
+			handleSearch();
 		}
 	};
 
 	return (
 		<>
 			<Header />
-			<SearchBar postcode={postcode} onSearch={handleSearch} onInputChange={handleInputChange} />
+			<SearchBar postcode={postcode} onSearch={handleSearch} onInputChange={handleInputChange} onKeyPress={handleKeyPress} />
 			<CrimeTableView crimeData={crimeData} />
 		</>
 	);
